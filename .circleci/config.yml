@@ -22,14 +22,14 @@ executors:
     docker:
       - image: docker:git
     environment:
-      GLIBC_VERSION: 2.39
-    resource_class: arm.large
+      GLIBC_VERSION: 2.42
+    resource_class: aarch64.large
     working_directory: ~/docker-glibc-builder
   builder-x86:
     docker:
       - image: docker:git
     environment:
-      GLIBC_VERSION: 2.39
+      GLIBC_VERSION: 2.42
     resource_class: large
     working_directory: ~/docker-glibc-builder
   artefact-uploader:
@@ -39,7 +39,7 @@ executors:
     working_directory: ~/docker-glibc-builder
 jobs:
   build-aarch64:
-    executor: builder-arm
+    executor: builder-aarch64
     steps:
       - checkout
       - setup_remote_docker
